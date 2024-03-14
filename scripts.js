@@ -38,7 +38,7 @@ console.log(inputValue);
 let buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    displayValue += button.textContent;
+    displayValue += e.target.id;
     inputValue.value = displayValue;
   });
 });
