@@ -32,4 +32,14 @@ function operate(firstNumber, operator, secondNumber) {
   }
 }
 
-operate(8, "+", 2);
+let displayValue = "";
+let inputValue = document.querySelector("#calcInput");
+console.log(inputValue);
+let buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    displayValue += button.textContent;
+    inputValue.value = displayValue;
+  });
+});
+console.log(buttons);
