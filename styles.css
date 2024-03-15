@@ -34,7 +34,8 @@ body {
   border-radius: 50%;
 }
 
-.calculator-container .operation {
+.calculator-container .operation,
+.calculator-container .equals {
   width: 100px;
   height: 50px;
   border-radius: 10px;

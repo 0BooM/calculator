@@ -33,13 +33,15 @@ function operate(firstNumber, operator, secondNumber) {
 }
 
 let displayValue = "";
+let actualValue = "";
 let inputValue = document.querySelector("#calcInput");
-let buttons = document.querySelectorAll("button");
+let actionBtns = document.querySelectorAll(".action");
 
 function populateInput() {
-  buttons.forEach((button) => {
+  actionBtns.forEach((button) => {
     button.addEventListener("click", (e) => {
-      displayValue += e.target.id;
+      displayValue += button.innerHTML;
+      actualValue += button.innerHTML;
       inputValue.value = displayValue;
     });
   });
@@ -54,3 +56,32 @@ function clearInput() {
   });
 }
 clearInput();
+
+function calculatorOperation() {
+  let operationBtns = document.querySelectorAll(".operation");
+  let operationSymbol = "";
+  let firstNum = "";
+  let secondNum = "";
+
+  operationBtns.forEach((operationBtn) => {
+    operationBtn.addEventListener("click", (e) => {
+      operationSymbol = operationBtn.innerHTML;
+      firstNum = displayValue;
+      displayValue += operationSymbol;
+      inputValue.value += operationSymbol;
+      actualValue = "";
+      console.log(`First numbersss: ${firstNum}`);
+      console.log(`Operation symbol: ${operationSymbol}`);
+    });
+  });
+}
+calculatorOperation();
+
+function equalsOperation() {
+  let equalsBtn = document.querySelector(".equals");
+  equalsBtn.addEventListener("click", (e) => {
+    inputValue.value = "";
+    console.log(`Actual value: ${actualValue}`);
+  });
+}
+equalsOperation();
