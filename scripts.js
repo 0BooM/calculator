@@ -19,9 +19,9 @@ function operate(firstNumber, operator, secondNumber) {
       return add(firstNumber, secondNumber);
     case "-":
       return subtract(firstNumber, secondNumber);
-    case "*":
+    case document.querySelector(".multiply").innerHTML:
       return multiply(firstNumber, secondNumber);
-    case "/":
+    case document.querySelector(".divide").innerHTML:
       return divide(firstNumber, secondNumber);
     default:
       return "You did nothing";
@@ -78,7 +78,7 @@ function equalsOperation() {
   equalsBtn.addEventListener("click", (e) => {
     displayValue = "";
     inputValue.value = "";
-    let answer = operate(firstNum, operationSymbol, actualValue);
+    let answer = operate(+firstNum, operationSymbol, +actualValue);
     inputValue.value = answer;
   });
 }
