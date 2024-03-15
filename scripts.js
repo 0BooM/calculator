@@ -1,14 +1,14 @@
 function add(firstNum, secondNum) {
-  console.log(firstNum + secondNum);
+  return firstNum + secondNum;
 }
 function subtract(firstNum, secondNum) {
-  console.log(firstNum - secondNum);
+  return firstNum - secondNum;
 }
 function multiply(firstNum, secondNum) {
-  console.log(firstNum * secondNum);
+  return firstNum * secondNum;
 }
 function divide(firstNum, secondNum) {
-  console.log(firstNum / secondNum);
+  return firstNum / secondNum;
 }
 
 // let add = (firstNum, secondNum) => console.log(firstNum + secondNum);
@@ -16,19 +16,15 @@ function divide(firstNum, secondNum) {
 function operate(firstNumber, operator, secondNumber) {
   switch (operator) {
     case "+":
-      add(firstNumber, secondNumber);
-      break;
+      return add(firstNumber, secondNumber);
     case "-":
-      subtract(firstNumber, secondNumber);
-      break;
+      return subtract(firstNumber, secondNumber);
     case "*":
-      multiply(firstNumber, secondNumber);
-      break;
+      return multiply(firstNumber, secondNumber);
     case "/":
-      divide(firstNumber, secondNumber);
-      break;
+      return divide(firstNumber, secondNumber);
     default:
-      console.log("You did nothing");
+      return "You did nothing";
   }
 }
 
@@ -57,11 +53,10 @@ function clearInput() {
 }
 clearInput();
 
+let operationSymbol = "";
+let firstNum = "";
 function calculatorOperation() {
   let operationBtns = document.querySelectorAll(".operation");
-  let operationSymbol = "";
-  let firstNum = "";
-  let secondNum = "";
 
   operationBtns.forEach((operationBtn) => {
     operationBtn.addEventListener("click", (e) => {
@@ -72,6 +67,7 @@ function calculatorOperation() {
       actualValue = "";
       console.log(`First numbersss: ${firstNum}`);
       console.log(`Operation symbol: ${operationSymbol}`);
+      equalsOperation();
     });
   });
 }
@@ -80,8 +76,9 @@ calculatorOperation();
 function equalsOperation() {
   let equalsBtn = document.querySelector(".equals");
   equalsBtn.addEventListener("click", (e) => {
+    displayValue = "";
     inputValue.value = "";
-    console.log(`Actual value: ${actualValue}`);
+    let answer = operate(firstNum, operationSymbol, actualValue);
+    inputValue.value = answer;
   });
 }
-equalsOperation();
