@@ -72,13 +72,14 @@ function calculatorOperation() {
   });
 }
 calculatorOperation();
-
 function equalsOperation() {
+  let oldAnswer;
   let equalsBtn = document.querySelector(".equals");
   equalsBtn.addEventListener("click", (e) => {
     displayValue = "";
     inputValue.value = "";
     let answer = operate(+firstNum, operationSymbol, +actualValue);
     inputValue.value = answer;
+    displayValue = answer;
   });
 }
