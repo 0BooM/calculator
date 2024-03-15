@@ -34,12 +34,14 @@ function operate(firstNumber, operator, secondNumber) {
 
 let displayValue = "";
 let inputValue = document.querySelector("#calcInput");
-console.log(inputValue);
 let buttons = document.querySelectorAll("button");
-buttons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    displayValue += e.target.id;
-    inputValue.value = displayValue;
+
+function populateInput() {
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      displayValue += e.target.id;
+      inputValue.value = displayValue;
+    });
   });
-});
-console.log(buttons);
+}
+populateInput();
