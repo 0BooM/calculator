@@ -45,3 +45,12 @@ function populateInput() {
   });
 }
 populateInput();
+
+let clearBtn = document.querySelector(".clear");
+function clearInput() {
+  clearBtn.addEventListener("click", (e) => {
+    inputValue.value = "";
+    displayValue = "";
+  });
+}
+clearInput();
