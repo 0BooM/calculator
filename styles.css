@@ -45,8 +45,14 @@ body {
 
 .calculator-container .equals {
   width: 273px;
+  background-color: rgb(209, 77, 0);
 }
-
+.calculator-container .equals:hover {
+  background-color: rgb(230, 84, 0);
+}
+.calculator-container .equals:active {
+  background-color: rgb(255, 94, 0);
+}
 button:hover {
   background-color: rgb(85, 85, 85);
 }
