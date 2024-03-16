@@ -42,6 +42,15 @@ body {
   font-size: 20px;
   text-align: center;
 }
+.calculator-container .operation {
+  background-color: rgb(247, 115, 39);
+}
+.calculator-container .operation:hover {
+  background-color: rgb(255, 140, 73);
+}
+.calculator-container .operation:active {
+  background-color: rgb(255, 158, 102);
+}
 
 .calculator-container .equals {
   width: 273px;
