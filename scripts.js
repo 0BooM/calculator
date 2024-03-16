@@ -83,7 +83,7 @@ function equalsOperation() {
   equalsBtn.addEventListener("click", (e) => {
     displayValue = "";
     inputValue.value = "";
-    answer = operate(+firstNum, operationSymbol, +actualValue);
+    zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
     inputValue.value = answer;
     displayValue = answer;
   });
@@ -96,6 +96,16 @@ function evaluateMoreThanOneOperation(operation) {
     answer = operate(+firstNum, operationSymbol, +actualValue);
     inputValue.value = answer;
     displayValue = answer;
-    console.log(`evaluateMoreThanOneOperation`);
+  }
+}
+
+function zeroDivideErrorOrEvaluateOperation(operator, number) {
+  if (
+    number == "0" &&
+    operator == document.querySelector(".divide").innerHTML
+  ) {
+    answer = "You can't divide by zero";
+  } else {
+    answer = operate(+firstNum, operationSymbol, +actualValue);
   }
 }
