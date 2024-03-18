@@ -42,6 +42,18 @@ function populateInput() {
 }
 populateInput();
 
+function populateInputWithDot() {
+  let dotBtn = document.querySelector(".dot");
+  dotBtn.addEventListener("click", (e) => {
+    if (!actualValue.includes(".")) {
+      displayValue += ".";
+      actualValue += ".";
+      inputValue.value = displayValue;
+    }
+  });
+}
+populateInputWithDot();
+
 let clearBtn = document.querySelector(".clear");
 function clearInput() {
   clearBtn.addEventListener("click", (e) => {
