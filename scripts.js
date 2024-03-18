@@ -55,17 +55,17 @@ function populateInputWithDot() {
 populateInputWithDot();
 
 let clearBtn = document.querySelector(".clear");
+clearBtn.addEventListener("click", (e) => {
+  clearInput();
+});
 function clearInput() {
-  clearBtn.addEventListener("click", (e) => {
-    inputValue.value = "";
-    displayValue = "";
-    actualValue = "";
-    firstNum = "";
-    operationSymbol = "";
-    answer = "";
-  });
+  inputValue.value = "";
+  displayValue = "";
+  actualValue = "";
+  firstNum = "";
+  operationSymbol = "";
+  answer = "";
 }
-clearInput();
 
 let operationSymbol = "";
 let firstNum = "";
@@ -83,7 +83,6 @@ function calculatorOperation() {
       console.log(`First numbersss: ${firstNum}`);
       console.log(`Operation symbol: ${operationSymbol}`);
       console.log(`Actual value:  ${actualValue}`);
-      equalsOperation();
       zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
     });
   });
@@ -94,13 +93,24 @@ let answer = "";
 function equalsOperation() {
   let equalsBtn = document.querySelector(".equals");
   equalsBtn.addEventListener("click", (e) => {
-    displayValue = "";
-    inputValue.value = "";
     zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
-    inputValue.value = Math.round(answer * 100000000) / 100000000;
-    displayValue = Math.round(answer * 10000) / 100000000;
+    answer =
+      Math.round(
+        operate(+firstNum, operationSymbol, +actualValue) * 100000000
+      ) / 100000000;
+    actualValue = "";
+    inputValue.value = answer;
+    displayValue = "";
+    firstNum = answer;
+    operationSymbol = "";
+    console.log(`Answer: ${answer}`);
+    console.log(`Input value: ${inputValue.value}`);
+    console.log(`First num: ${firstNum}`);
+    console.log(`Operation: ${operationSymbol}`);
+    console.log(`Actual value: ${actualValue}`);
   });
 }
+equalsOperation();
 
 function evaluateMoreThanOneOperation(operation) {
   if (operation != "") {

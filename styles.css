@@ -21,7 +21,8 @@ body {
   width: 310px;
   padding: 10px;
 }
-.calculator-container button {
+.calculator-container button,
+.calculator-container .delete {
   cursor: pointer;
   margin: 4px;
   width: 50px;
@@ -53,9 +54,8 @@ body {
   background-color: rgb(255, 158, 102);
 }
 
-.calculator-container .equals,
-.calculator-container .delete {
-  width: 273px;
+.calculator-container .equals {
+  width: 166px;
   background-color: rgb(209, 77, 0);
 }
 .calculator-container .equals:hover {
