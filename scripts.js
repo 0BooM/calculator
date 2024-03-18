@@ -72,6 +72,7 @@ function calculatorOperation() {
       console.log(`Operation symbol: ${operationSymbol}`);
       console.log(`Actual value:  ${actualValue}`);
       equalsOperation();
+      zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
     });
   });
 }
@@ -84,8 +85,8 @@ function equalsOperation() {
     displayValue = "";
     inputValue.value = "";
     zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
-    inputValue.value = answer;
-    displayValue = answer;
+    inputValue.value = Math.round(answer * 100000000) / 100000000;
+    displayValue = Math.round(answer * 10000) / 100000000;
   });
 }
 
@@ -93,7 +94,10 @@ function evaluateMoreThanOneOperation(operation) {
   if (operation != "") {
     displayValue = "";
     inputValue.value = "";
-    answer = operate(+firstNum, operationSymbol, +actualValue);
+    answer =
+      Math.round(
+        operate(+firstNum, operationSymbol, +actualValue) * 100000000
+      ) / 100000000;
     inputValue.value = answer;
     displayValue = answer;
   }
