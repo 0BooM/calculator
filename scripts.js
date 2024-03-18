@@ -125,3 +125,15 @@ function zeroDivideErrorOrEvaluateOperation(operator, number) {
     answer = operate(+firstNum, operationSymbol, +actualValue);
   }
 }
+
+function deleteCharacter() {
+  let deleteBtn = document.querySelector(".delete");
+  deleteBtn.addEventListener("click", (e) => {
+    let delLastCharAct = actualValue.slice(0, actualValue.length - 1);
+    let delLastCharInp = displayValue.slice(0, displayValue.length - 1);
+    actualValue = delLastCharAct;
+    displayValue = delLastCharInp;
+    inputValue.value = delLastCharInp;
+  });
+}
+deleteCharacter();
