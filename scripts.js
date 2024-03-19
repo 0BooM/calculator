@@ -34,6 +34,12 @@ let actionBtns = document.querySelectorAll(".action");
 function populateInput() {
   actionBtns.forEach((button) => {
     button.addEventListener("click", (e) => {
+      if (operationEqual) {
+        firstNum = answer;
+        displayValue = "";
+        actualValue = "";
+        operationEqual = false;
+      }
       displayValue += button.innerHTML;
       actualValue += button.innerHTML;
       inputValue.value = displayValue;
@@ -76,7 +82,11 @@ function calculatorOperation() {
     operationBtn.addEventListener("click", (e) => {
       evaluateMoreThanOneOperation(operationSymbol);
       operationSymbol = operationBtn.innerHTML;
-      firstNum = displayValue;
+      if (operationEqual) {
+        firstNum = answer;
+        displayValue = answer;
+        operationEqual = false;
+      } else firstNum = displayValue;
       displayValue += operationSymbol;
       inputValue.value += operationSymbol;
       actualValue = "";
@@ -90,19 +100,21 @@ function calculatorOperation() {
 calculatorOperation();
 
 let answer = "";
+let operationEqual = false;
 function equalsOperation() {
   let equalsBtn = document.querySelector(".equals");
   equalsBtn.addEventListener("click", (e) => {
+    operationEqual = true;
     zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
     answer =
       Math.round(
         operate(+firstNum, operationSymbol, +actualValue) * 100000000
       ) / 100000000;
-    actualValue = "";
-    inputValue.value = answer;
+    inputValue.value = "";
     displayValue = "";
-    firstNum = answer;
+    // actualValue = "";
     operationSymbol = "";
+    inputValue.value = answer;
     console.log(`Answer: ${answer}`);
     console.log(`Input value: ${inputValue.value}`);
     console.log(`First num: ${firstNum}`);
