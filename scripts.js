@@ -112,7 +112,6 @@ function equalsOperation() {
       ) / 100000000;
     inputValue.value = "";
     displayValue = "";
-    // actualValue = "";
     operationSymbol = "";
     inputValue.value = answer;
     console.log(`Answer: ${answer}`);
@@ -148,14 +147,39 @@ function zeroDivideErrorOrEvaluateOperation(operator, number) {
   }
 }
 
-function deleteCharacter() {
+function deleteCharacterBtn() {
   let deleteBtn = document.querySelector(".delete");
   deleteBtn.addEventListener("click", (e) => {
-    let delLastCharAct = actualValue.slice(0, actualValue.length - 1);
-    let delLastCharInp = displayValue.slice(0, displayValue.length - 1);
-    actualValue = delLastCharAct;
-    displayValue = delLastCharInp;
-    inputValue.value = delLastCharInp;
+    deleteCharacter();
   });
 }
-deleteCharacter();
+deleteCharacterBtn();
+
+function deleteCharacter() {
+  let delLastCharAct = actualValue.slice(0, actualValue.length - 1);
+  let delLastCharInp = displayValue.slice(0, displayValue.length - 1);
+  actualValue = delLastCharAct;
+  displayValue = delLastCharInp;
+  inputValue.value = delLastCharInp;
+}
+
+function keyboardInput() {
+  window.addEventListener("keydown", (e) => {
+    let pressedKey = e.key;
+    if (operationEqual) {
+      firstNum = answer;
+      displayValue = "";
+      actualValue = "";
+      inputValue.value = "";
+      operationEqual = false;
+    }
+    if ((pressedKey >= "0" && pressedKey <= "9") || pressedKey == ".") {
+      displayValue += pressedKey;
+      actualValue += pressedKey;
+      inputValue.value += pressedKey;
+    } else if (pressedKey == "Backspace") {
+      deleteCharacter();
+    }
+  });
+}
+keyboardInput();
