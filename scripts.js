@@ -90,9 +90,6 @@ function calculatorOperation() {
       displayValue += operationSymbol;
       inputValue.value += operationSymbol;
       actualValue = "";
-      console.log(`First numbersss: ${firstNum}`);
-      console.log(`Operation symbol: ${operationSymbol}`);
-      console.log(`Actual value:  ${actualValue}`);
       zeroDivideErrorOrEvaluateOperation(operationSymbol, actualValue);
     });
   });
@@ -114,11 +111,6 @@ function equalsOperation() {
     displayValue = "";
     operationSymbol = "";
     inputValue.value = answer;
-    console.log(`Answer: ${answer}`);
-    console.log(`Input value: ${inputValue.value}`);
-    console.log(`First num: ${firstNum}`);
-    console.log(`Operation: ${operationSymbol}`);
-    console.log(`Actual value: ${actualValue}`);
   });
 }
 equalsOperation();
